@@ -1,7 +1,10 @@
 package mk.ukim.finki.wp.lab.model;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Random;
 
 @NoArgsConstructor
 @Data
@@ -13,12 +16,12 @@ public class Order {
     private String clientAddress;
     private Long orderId;
 
-    public Order(String pizzaType, String pizzaSize, String clientName, String clientAddress, Long orderId){
+
+    public Order(String pizzaType, String pizzaSize, String clientName, String clientAddress) {
         this.pizzaType = pizzaType;
         this.pizzaSize = pizzaSize;
         this.clientName = clientName;
         this.clientAddress = clientAddress;
-        this.orderId = orderId;
+        this.orderId  = Math.abs(new Random().nextLong());
     }
-
 }

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
 
     @Override
-    public Order placeOrder(String pizzaType, String clientName, String address){
-        return null;
+    public Order placeOrder(String pizzaType, String pizzaSize, String clientName, String address){
+        return new Order(pizzaType, pizzaSize, clientName, address);
     }
 
 }

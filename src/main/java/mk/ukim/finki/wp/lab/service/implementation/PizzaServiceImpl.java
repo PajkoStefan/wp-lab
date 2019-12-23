@@ -13,7 +13,7 @@ public class PizzaServiceImpl implements PizzaService {
     private PizzaRepository pizzaRepository;
 
     //DI
-    public PizzaServiceImpl(PizzaRepository pizzaRepository){
+    public PizzaServiceImpl(PizzaRepository pizzaRepository) {
         this.pizzaRepository = pizzaRepository;
     }
 
