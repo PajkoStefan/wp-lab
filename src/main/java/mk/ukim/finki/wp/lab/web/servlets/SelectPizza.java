@@ -1,4 +1,4 @@
-package mk.ukim.finki.wp.lab.web;
+package mk.ukim.finki.wp.lab.web.servlets;
 
 import mk.ukim.finki.wp.lab.model.Order;
 import org.thymeleaf.context.WebContext;
@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "pizza-order-servlet", urlPatterns = "/PizzaOrder.do")
-public class PizzaOrder extends HttpServlet {
+@WebServlet(name = "select-pizza-servlet", urlPatterns = "/selectPizza.do")
+public class SelectPizza extends HttpServlet {
 
     private final SpringTemplateEngine springTemplateEngine;
 
-    public PizzaOrder(SpringTemplateEngine springTemplateEngine) {
+    public SelectPizza(SpringTemplateEngine springTemplateEngine) {
         this.springTemplateEngine = springTemplateEngine;
     }
 
@@ -28,14 +28,13 @@ public class PizzaOrder extends HttpServlet {
         HttpSession session = request.getSession();
         WebContext webContext = new WebContext(request, response, request.getServletContext());
 
-        Order order = (Order) session.getAttribute("order"); // mora cast, vraca String
-        String selectedPizzaSize = request.getParameter("pizza_size");
+        Order order = new Order();
+        String selectedPizzaType = request.getParameter("pizza");
 
-        order.setPizzaSize(selectedPizzaSize);
+        order.setPizzaType(selectedPizzaType);
         session.setAttribute("order", order);
-        webContext.setVariable("pizzaType", order.getPizzaType());
-        webContext.setVariable("pizzaSize", selectedPizzaSize);
-
-        this.springTemplateEngine.process("deliveryInfo", webContext, response.getWriter());
+        webContext.setVariable("pizzaType", selectedPizzaType);
+        System.out.println(response.getWriter());
+        this.springTemplateEngine.process("selectPizzaSize", webContext, response.getWriter());
     }
 }
