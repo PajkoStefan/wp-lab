@@ -28,7 +28,7 @@ public class ShowPizza extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         WebContext webContext = new WebContext(request, response, request.getServletContext());
 //      List<Pizza> pizzas = pizzaService.listPizzas(); II
-        webContext.setVariable("pizzas", this.pizzaService.listPizzas()); // I "pizzas", pizzas
+        webContext.setVariable("pizzas", this.pizzaService.getAll()); // I "pizzas", pizzas
         response.setContentType("text/html; charset=UTF-8");
         this.springTemplateEngine.process("listPizzas", webContext, response.getWriter());
     }

@@ -1,0 +1,94 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection) or
+# paste cURL into the file and request will be converted to HTTP Request format.
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### get all (+)
+
+GET http://localhost:8080/api/ingredients
+
+### get by id (+)
+
+GET http://localhost:8080/api/ingredients/af4e3b2a-cc68-490d-9523-7fc42c0642ad
+
+### test pages (+)
+
+GET http://localhost:8080/api/ingredients?page=0&size=10
+
+### test pages (-)
+
+GET http://localhost:8080/api/ingredients?page=03&size=11
+
+### test spicy (+)
+
+GET http://localhost:8080/api/ingredients?spicy=true
+
+### create ingredient (+)
+
+POST http://localhost:8080/api/ingredients
+Content-Type: application/x-www-form-urlencoded
+
+name=newIngred&spicy=false&amount=2&veggie=false
+
+### create ingredient (-) -> same name exception
+POST http://localhost:8080/api/ingredients
+Content-Type: application/x-www-form-urlencoded
+
+name=cheese&spicy=false&amount=7&veggie=false
+
+### create ingredient (-) -> no more spicy ingrediens
+POST http://localhost:8080/api/ingredients
+Content-Type: application/x-www-form-urlencoded
+
+name=test5&spicy=true&amount=4&veggie=false
+
+### patch ingredient (+)
+
+PATCH http://localhost:8080/api/ingredients/25b91eef-5544-4443-a715-535eccc20a84
+Content-Type: application/x-www-form-urlencoded
+
+veggie=false&name=updatedBacon
+
+### patch ingredient (-) -> same name exception
+PATCH http://localhost:8080/api/ingredients/af4e3b2a-cc68-490d-9523-7fc42c0642ad
+Content-Type: application/x-www-form-urlencoded
+
+name=tomato sauce
+
+### delete ingredient (+)
+DELETE http://localhost:8080/api/ingredients/0c4793da-29d7-4067-8249-3b30569757ac
+
+### delete ingredient (-)
+DELETE http://localhost:8080/api/ingredients/0c4793da-29d7-4067-8249-3b30569757ac
+
+### get pizzas witn ingredient (+)
+GET http://localhost:8080/api/ingredients/dd721585-2f12-432e-9f08-2bcf5653c9c8/pizzas
+
+###
+
+GET http://localhost:8080/api/pizzas
+
+###
+
+GET http://localhost:8080/api/pizzas/1c11cdb9-48f2-4a27-9e5a-52909b98805f
+
+###
+
+GET http://localhost:8080/api/pizzas?totalIngredients=8
+
+###
+
+GET http://localhost:8080/api/pizzas/compare?pizza1=49333425-9d7e-46c9-866a-f6b6ffba20ba&pizza2=a8699c10-a1c0-4816-8db3-e967d4efc7ef
+
+###
+
+GET http://localhost:8080/api/pizzas/compare?pizza1=49333425-9d7e-46c9-866a-f6b6ffba20ba&pizza2=49333425-9d7e-46c9-866a-f6b6ffba20ba
+
+###
+
+DELETE  http://localhost:8080/api/pizzas/49333425-9d7e-46c9-866a-f6b6ffba20ba
+
+###
