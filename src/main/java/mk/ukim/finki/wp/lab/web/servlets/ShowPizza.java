@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //servlet
-@WebServlet(name ="show-pizza-servlet") // ne raboti samo so "/" ako ima urlPatterns = "/*"
+@WebServlet(name ="show-pizza-servlet", urlPatterns = "") // ne raboti samo so "/" ako ima urlPatterns = "/*"
 public class ShowPizza extends HttpServlet {
 
     private final SpringTemplateEngine springTemplateEngine;

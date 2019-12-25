@@ -19,6 +19,6 @@ public class PizzaServiceImpl implements PizzaService {
 
     @Override
     public List<Pizza> listPizzas() {
-        return pizzaRepository.getAllPizzas();
+        return this.pizzaRepository.listOfPizzas();
     }
 }
